@@ -1,0 +1,16 @@
+<ng-container *ngFor="let child of children">
+    <ng-container *ngIf="(!child.children|| child.children.length==0)">
+        <li><a [routerLink]="[child.data.routerlink]" externalLink="{{child.data.url}}" [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact: true}" class="dropdown-item">{{child.label}}</a></li>
+
+    </ng-container>
+    <ng-container *ngIf="(child.children && child.children.length>0)">
+        <li class="dropdown-submenu dropdown-hover">
+            <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                class="dropdown-item dropdown-toggle">{{child.label}}</a>
+            <ul class="dropdown-menu border-0 shadow">
+                <app-sub-menu-items [children]="child.children"></app-sub-menu-items>
+            </ul>
+        </li>
+    </ng-container>
+</ng-container>

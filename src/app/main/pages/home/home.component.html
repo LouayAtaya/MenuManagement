@@ -1,0 +1,51 @@
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-10">           
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">  إدارة القوائم</h3>
+            <button pButton pRipple label="إضافة" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="addNode()" style="float: left;"></button>
+          </div>
+          <div class="card-body">
+            <div class="row " dir="ltr">
+                <div class="col-12 col-sm-6">
+                    <h6>القوائم الرئيسية</h6>
+
+                    <p-tree [value]="nodes" [draggableNodes]="true" [droppableNodes]="true"  droppableScope="main" draggableScope="main" (onNodeDrop)="onDrop()" [filter]="true" selectionMode="single" [(selection)]="selectedNode" [contextMenu]="cm">
+
+                    </p-tree>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <h6> قوائم للإضافة </h6>
+
+                    <p-tree [value]="virtualNodes" [draggableNodes]="true" [droppableNodes]="true" droppableScope="virtual" draggableScope="main" [filter]="true" >
+                       
+                        <ng-template let-node pTemplate="url">
+                            <a [href]="node.data">{{node.label}}</a>
+                        </ng-template>
+                        <ng-template pTemplate="empty">
+                            No records found
+                        </ng-template>
+                       
+                    </p-tree>
+                </div>
+            
+            </div>
+            
+
+          </div>
+          <div class="card-footer">
+            <button (click)="saveChanges()" [disabled]="!menusUpdated"  class="btn btn-primary">حفظ التعديلات</button>
+
+        </div>
+        </div>
+    </div>
+</div>
+ 
+<p-toast position="top-center"></p-toast>
+<p-contextMenu #cm [model]="contextMenuItems"></p-contextMenu>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+

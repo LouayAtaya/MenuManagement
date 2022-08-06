@@ -19,6 +19,10 @@
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
     "admin-lte-with-rtl": "^3.1.0",
+    "angular-animations": "^0.11.0",
+    "lodash": "^4.17.21",
+    "primeicons": "^5.0.0",
+    "primeng": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
